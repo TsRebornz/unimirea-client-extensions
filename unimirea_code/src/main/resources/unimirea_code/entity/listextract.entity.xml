@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-config name="listextract"
+               package-name="ru.tandemservice.uniclient.unimirea_code.entity"
+               xmlns="http://www.tandemframework.org/meta/entity"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.tandemframework.org/meta/entity http://www.tandemframework.org/schema/meta/meta-entity.xsd">
+
+
+    <!-- О ВЫДАЧЕ ОБЫЧНЫХ ЗНАЧКОВ -->
+    <child-entity name="giveBadgeCommonListExtract" parent-ref="listStudentExtract" title="Проект приказа «О выдаче обычных значков»">
+        <many-to-one name="course" entity-ref="course" required="true"/>
+        <many-to-one name="group" entity-ref="group" required="true"/>
+    </child-entity>
+
+    <!-- О ВЫДАЧЕ ЗНАЧКОВ С СИМВОЛИКОЙ ВУЗА -->
+    <child-entity name="giveBadgeWithUSignListExtract" parent-ref="listStudentExtract" title="Проект приказа «О выдаче значков с символикой вуза»">
+        <many-to-one name="course" entity-ref="course" required="true"/>
+        <many-to-one name="group" entity-ref="group" required="true"/>
+    </child-entity>
+
+</entity-config>

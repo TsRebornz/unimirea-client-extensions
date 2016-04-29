@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<subclass name="ru.tandemservice.uniclient.unimirea_code.entity.TestStuExtract" extends="ru.tandemservice.movestudent.entity.CommonStuExtract" lazy="true"
+    persister="org.tandemframework.hibsupport.persister.SubclassTypedPersister" dynamic-update="true"
+    discriminator-value="-3585">  <!-- temporary discriminator value! -->
+
+<join table="teststuextract_t">
+    <comment>ru.tandemservice.uniclient.unimirea_code.entity.TestStuExtract</comment>
+    <key column="id" foreign-key="fk_id_teststuextract"/>
+    <many-to-one name="newCompensationType" column="newcompensationtype_id" entity-name="ru.tandemservice.uni.entity.catalog.CompensationType"
+        not-null="true" lazy="proxy"        foreign-key="fk_newcompen_386f5dfa_50c625df" index="idx_newcompe_3d803bf2_50c625df"/>
+
+</join>
+</subclass>
+
+</hibernate-mapping>

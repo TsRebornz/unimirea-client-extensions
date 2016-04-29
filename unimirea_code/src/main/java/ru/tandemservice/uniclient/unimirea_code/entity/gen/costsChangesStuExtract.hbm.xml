@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<subclass name="ru.tandemservice.uniclient.unimirea_code.entity.CostsChangesStuExtract" extends="ru.tandemservice.movestudent.entity.CommonStuExtract" lazy="true"
+    persister="org.tandemframework.hibsupport.persister.SubclassTypedPersister" dynamic-update="true"
+    discriminator-value="-20150">  <!-- temporary discriminator value! -->
+
+<join table="costschangesstuextract_t">
+    <comment>ru.tandemservice.uniclient.unimirea_code.entity.CostsChangesStuExtract</comment>
+    <key column="id" foreign-key="fk_id_costschangesstuextract"/>
+    <many-to-one name="costsChangesCompensationType" column="cstschngscmpnstntyp_id" entity-name="ru.tandemservice.uni.entity.catalog.CompensationType"
+        not-null="true" lazy="proxy"        foreign-key="fk_costschan_be6b9bab_b652052a" index="idx_costscha_7928f4b3_b652052a"/>
+
+</join>
+</subclass>
+
+</hibernate-mapping>
