@@ -44,7 +44,7 @@ public class EntParticipationRtfReport
             cells.add(entPart.getUnit().getTitile());
             cells.add(entPart.getUnit().getDateBegin().toString());
             cells.add(entPart.getUnit().getDateEnd().toString());
-            cells.add(entPart.getType().getEmployee().getFullFio());
+            cells.add(entPart.getEmployee().getEmployee().getFullFio());
             cells.add(entPart.getOverseerAsString());
             lines.add(cells.toArray(new String[cells.size()]));
         }

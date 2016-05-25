@@ -1,16 +1,20 @@
 package ru.tandemservice.uniclient.unimirea_code.entity.gen;
 
-import javax.validation.constraints.*;
-import org.hibernate.validator.constraints.*;
+import org.tandemframework.core.bean.FastBeanGenBase;
+import org.tandemframework.core.bean.IFastBean;
+import org.tandemframework.core.entity.EntityBase;
+import org.tandemframework.core.entity.IEntity;
+import org.tandemframework.core.entity.dsl.EntityPath;
+import org.tandemframework.core.entity.dsl.PropertyPath;
+import org.tandemframework.core.entity.dsl.SupportedPropertyPath;
+import org.tandemframework.core.meta.entity.IEntityMeta;
+import org.tandemframework.core.runtime.EntityRuntime;
+import org.tandemframework.core.view.formatter.DebugEntityFormatter;
 import org.tandemframework.shared.employeebase.base.entity.EmployeePost;
 import ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption;
 import ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit;
-import org.tandemframework.core.view.formatter.DebugEntityFormatter;
-import org.tandemframework.core.meta.entity.IEntityMeta;
-import org.tandemframework.core.runtime.EntityRuntime;
-import org.tandemframework.core.entity.*;
-import org.tandemframework.core.entity.dsl.*;
-import org.tandemframework.core.bean.*;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Участие во внеучебном мероприятии
@@ -22,18 +26,18 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
 
     public static final String ENTITY_CLASS = "ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption";
     public static final String ENTITY_NAME = "entertainmentPrtcption";
-    public static final int VERSION_HASH = 475540536;
+    public static final int VERSION_HASH = -1589480196;
     private static IEntityMeta ENTITY_META;
 
     public static final String L_UNIT = "unit";
-    public static final String L_TYPE = "type";
+    public static final String L_EMPLOYEE = "employee";
     public static final String P_OVERSEER = "overseer";
     public static final String P_FULL_ENTERTAINMENT_NAME = "fullEntertainmentName";
     public static final String P_OVERSEER_AS_STRING = "overseerAsString";
 
     private EntertainmentTypeUnit _unit;     // Мероприятие
-    private EmployeePost _type;     // Участник
-    private boolean _overseer;     // Наблюдатель
+    private EmployeePost _employee;     // Участник
+    private boolean _overseer = false;     // Наблюдатель
 
     @Override
     public String toString() {
@@ -71,18 +75,18 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
      * @return Участник. Свойство не может быть null.
      */
     @NotNull
-    public EmployeePost getType()
+    public EmployeePost getEmployee()
     {
-        return _type;
+        return _employee;
     }
 
     /**
-     * @param type Участник. Свойство не может быть null.
+     * @param employee Участник. Свойство не может быть null.
      */
-    public void setType(EmployeePost type)
+    public void setEmployee(EmployeePost employee)
     {
-        dirty(_type, type);
-        _type = type;
+        dirty(_employee, employee);
+        _employee = employee;
     }
 
     /**
@@ -113,7 +117,7 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
         if (another instanceof EntertainmentPrtcptionGen)
         {
             setUnit(((EntertainmentPrtcption)another).getUnit());
-            setType(((EntertainmentPrtcption)another).getType());
+            setEmployee(((EntertainmentPrtcption)another).getEmployee());
             setOverseer(((EntertainmentPrtcption)another).isOverseer());
         }
     }
@@ -143,8 +147,8 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
                     return obj.getId();
                 case "unit":
                     return obj.getUnit();
-                case "type":
-                    return obj.getType();
+                case "employee":
+                    return obj.getEmployee();
                 case "overseer":
                     return obj.isOverseer();
             }
@@ -162,8 +166,8 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
                 case "unit":
                     obj.setUnit((EntertainmentTypeUnit) value);
                     return;
-                case "type":
-                    obj.setType((EmployeePost) value);
+                case "employee":
+                    obj.setEmployee((EmployeePost) value);
                     return;
                 case "overseer":
                     obj.setOverseer((Boolean) value);
@@ -181,7 +185,7 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
                         return true;
                 case "unit":
                         return true;
-                case "type":
+                case "employee":
                         return true;
                 case "overseer":
                         return true;
@@ -198,7 +202,7 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
                     return true;
                 case "unit":
                     return true;
-                case "type":
+                case "employee":
                     return true;
                 case "overseer":
                     return true;
@@ -215,7 +219,7 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
                     return Long.class;
                 case "unit":
                     return EntertainmentTypeUnit.class;
-                case "type":
+                case "employee":
                     return EmployeePost.class;
                 case "overseer":
                     return Boolean.class;
@@ -242,11 +246,11 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
 
     /**
      * @return Участник. Свойство не может быть null.
-     * @see ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption#getType()
+     * @see ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption#getEmployee()
      */
-    public static EmployeePost.Path<EmployeePost> type()
+    public static EmployeePost.Path<EmployeePost> employee()
     {
-        return _dslPath.type();
+        return _dslPath.employee();
     }
 
     /**
@@ -283,7 +287,7 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
     public static class Path<E extends EntertainmentPrtcption> extends EntityPath<E>
     {
         private EntertainmentTypeUnit.Path<EntertainmentTypeUnit> _unit;
-        private EmployeePost.Path<EmployeePost> _type;
+        private EmployeePost.Path<EmployeePost> _employee;
         private PropertyPath<Boolean> _overseer;
         private SupportedPropertyPath<String> _fullEntertainmentName;
         private SupportedPropertyPath<String> _overseerAsString;
@@ -316,13 +320,13 @@ public abstract class EntertainmentPrtcptionGen extends EntityBase
 
     /**
      * @return Участник. Свойство не может быть null.
-     * @see ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption#getType()
+     * @see ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption#getEmployee()
      */
-        public EmployeePost.Path<EmployeePost> type()
+        public EmployeePost.Path<EmployeePost> employee()
         {
-            if(_type == null )
-                _type = new EmployeePost.Path<EmployeePost>(L_TYPE, this);
-            return _type;
+            if(_employee == null )
+                _employee = new EmployeePost.Path<EmployeePost>(L_EMPLOYEE, this);
+            return _employee;
         }
 
     /**

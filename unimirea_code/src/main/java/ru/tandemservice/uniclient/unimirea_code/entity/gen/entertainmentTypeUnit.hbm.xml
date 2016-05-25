@@ -16,7 +16,7 @@
     <property name="titile" column="titile_p" not-null="true"            type="org.tandemframework.hibsupport.type.TrimmedStringType" length="255"/>
 
     <many-to-one name="type" column="type_id" entity-name="ru.tandemservice.uniclient.unimirea_code.entity.catalog.EntertainmentType"
-        not-null="false" lazy="proxy"        foreign-key="fk_type_entertainmenttypeunit" index="idx_type_entertainmenttypeunit"/>
+        not-null="true" lazy="proxy"        foreign-key="fk_type_entertainmenttypeunit" index="idx_type_entertainmenttypeunit"/>
 
     <property name="dateBegin" column="datebegin_p" not-null="true"            type="date" length="255"/>
 

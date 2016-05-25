@@ -16,8 +16,8 @@
     <many-to-one name="unit" column="unit_id" entity-name="ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit"
         not-null="true" lazy="proxy"        foreign-key="fk_unit_entertainmentprtcption" index="idx_unit_8e415f8b"/>
 
-    <many-to-one name="type" column="type_id" entity-name="org.tandemframework.shared.employeebase.base.entity.EmployeePost"
-        not-null="true" lazy="proxy"        foreign-key="fk_type_entertainmentprtcption" index="idx_type_8e415f8b"/>
+    <many-to-one name="employee" column="employee_id" entity-name="org.tandemframework.shared.employeebase.base.entity.EmployeePost"
+        not-null="true" lazy="proxy"        foreign-key="fk_employee_8e415f8b" index="idx_employee_8e415f8b"/>
 
     <property name="overseer" column="overseer_p" not-null="true"            type="boolean" length="255"/>
 

@@ -1,16 +1,21 @@
 package ru.tandemservice.uniclient.unimirea_code.entity.gen;
 
-import javax.validation.constraints.*;
-import org.hibernate.validator.constraints.*;
-import java.util.Date;
-import ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit;
-import ru.tandemservice.uniclient.unimirea_code.entity.catalog.EntertainmentType;
-import org.tandemframework.core.view.formatter.DebugEntityFormatter;
+import org.hibernate.validator.constraints.Length;
+import org.tandemframework.core.bean.FastBeanGenBase;
+import org.tandemframework.core.bean.IFastBean;
+import org.tandemframework.core.entity.EntityBase;
+import org.tandemframework.core.entity.IEntity;
+import org.tandemframework.core.entity.dsl.EntityPath;
+import org.tandemframework.core.entity.dsl.PropertyPath;
+import org.tandemframework.core.entity.dsl.SupportedPropertyPath;
 import org.tandemframework.core.meta.entity.IEntityMeta;
 import org.tandemframework.core.runtime.EntityRuntime;
-import org.tandemframework.core.entity.*;
-import org.tandemframework.core.entity.dsl.*;
-import org.tandemframework.core.bean.*;
+import org.tandemframework.core.view.formatter.DebugEntityFormatter;
+import ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit;
+import ru.tandemservice.uniclient.unimirea_code.entity.catalog.EntertainmentType;
+
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Учебное мероприятие
@@ -22,7 +27,7 @@ public abstract class EntertainmentTypeUnitGen extends EntityBase
 
     public static final String ENTITY_CLASS = "ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit";
     public static final String ENTITY_NAME = "entertainmentTypeUnit";
-    public static final int VERSION_HASH = -1534499851;
+    public static final int VERSION_HASH = 997661980;
     private static IEntityMeta ENTITY_META;
 
     public static final String P_TITILE = "titile";
@@ -72,15 +77,16 @@ public abstract class EntertainmentTypeUnitGen extends EntityBase
     }
 
     /**
-     * @return Типы мероприятий.
+     * @return Типы мероприятий. Свойство не может быть null.
      */
+    @NotNull
     public EntertainmentType getType()
     {
         return _type;
     }
 
     /**
-     * @param type Типы мероприятий.
+     * @param type Типы мероприятий. Свойство не может быть null.
      */
     public void setType(EntertainmentType type)
     {
@@ -302,7 +308,7 @@ public abstract class EntertainmentTypeUnitGen extends EntityBase
     }
 
     /**
-     * @return Типы мероприятий.
+     * @return Типы мероприятий. Свойство не может быть null.
      * @see ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit#getType()
      */
     public static EntertainmentType.Path<EntertainmentType> type()
@@ -384,7 +390,7 @@ public abstract class EntertainmentTypeUnitGen extends EntityBase
         }
 
     /**
-     * @return Типы мероприятий.
+     * @return Типы мероприятий. Свойство не может быть null.
      * @see ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit#getType()
      */
         public EntertainmentType.Path<EntertainmentType> type()

@@ -84,7 +84,7 @@ public class EntParticipationExcelReport
             }
             sheet.addCell(dateEnd);
 
-            Label fio = new Label(5, currentRow, entPart.getType().getEmployee().getFullFio());
+            Label fio = new Label(5, currentRow, entPart.getEmployee().getEmployee().getFullFio());
             sheet.addCell(fio);
 
             Label isOverseer = new Label(6, currentRow, entPart.getOverseerAsString());

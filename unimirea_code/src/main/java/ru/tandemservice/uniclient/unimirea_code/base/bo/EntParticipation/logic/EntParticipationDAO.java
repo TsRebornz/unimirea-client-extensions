@@ -20,7 +20,7 @@ public class EntParticipationDAO extends SharedBaseDao implements IEntParticipat
             EntertainmentPrtcption result = null;
                 result = new EntertainmentPrtcption();
                 result.setUnit(entUnit);
-                result.setType(employeePost);
+                result.setEmployee(employeePost);
                 result.setOverseer(overseer);
 
                 session.saveOrUpdate(result);

@@ -8,15 +8,7 @@ import org.tandemframework.core.view.list.column.ActionColumn;
 import org.tandemframework.core.view.list.column.SimpleColumn;
 import org.tandemframework.core.view.list.source.DynamicListDataSource;
 import org.tandemframework.core.view.list.source.IListDataSourceDelegate;
-import org.tandemframework.hibsupport.DataAccessServices;
-import org.tandemframework.hibsupport.dql.DQLExpressions;
-import org.tandemframework.hibsupport.dql.DQLSelectBuilder;
-import org.tandemframework.hibsupport.dql.util.DQLSelectColumnNumerator;
-import ru.tandemservice.uni.entity.employee.Student;
 import ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentTypeUnit;
-import ru.tandemservice.uniplaces.UniplacesComponents;
-
-import java.util.List;
 
 /**
  * Created by ocean on 13.10.2015.
@@ -40,6 +32,7 @@ public class Controller extends AbstractBusinessController<IDAO, Model>
     {
         getDao().prepare(getModel(iBusinessComponent));
         prepareDataSource(iBusinessComponent);
+
     }
     public void prepareDataSource(IBusinessComponent component){
 

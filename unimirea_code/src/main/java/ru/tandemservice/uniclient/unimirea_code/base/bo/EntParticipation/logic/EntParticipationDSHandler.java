@@ -5,11 +5,8 @@ import org.tandemframework.caf.command.io.DSOutput;
 import org.tandemframework.caf.logic.ExecutionContext;
 import org.tandemframework.caf.logic.datasource.output.DQLSelectOutputBuilder;
 import org.tandemframework.caf.logic.handler.DefaultSearchDataSourceHandler;
-import org.tandemframework.core.entity.OrderDirection;
 import org.tandemframework.hibsupport.dql.DQLExpressions;
 import org.tandemframework.hibsupport.dql.DQLSelectBuilder;
-import org.tandemframework.shared.employeebase.base.entity.Employee;
-import org.tandemframework.shared.employeebase.base.entity.OrgUnitTypePostRelation;
 import ru.tandemservice.uni.util.FilterUtils;
 import ru.tandemservice.uniclient.unimirea_code.base.bo.EntParticipation.ui.List.EntParticipationListUI;
 import ru.tandemservice.uniclient.unimirea_code.entity.EntertainmentPrtcption;
@@ -58,13 +55,13 @@ public class EntParticipationDSHandler extends DefaultSearchDataSourceHandler
         FilterUtils.applySelectFilter(dql, "e", EntertainmentPrtcption.unit().titile().s() , entTypeUnit);
         //FilterUtils.applySelectFilter(dql, "e", EntertainmentPrtcption.unit().type().title() , entTypeUnit);
 
-        FilterUtils.applySimpleLikeFilter(dql, "e", EntertainmentPrtcption.type().employee().person().identityCard().firstName() , firstName );
-        FilterUtils.applySimpleLikeFilter(dql, "e", EntertainmentPrtcption.type().employee().person().identityCard().middleName() , midName  );
-        FilterUtils.applySimpleLikeFilter(dql, "e", EntertainmentPrtcption.type().employee().person().identityCard().lastName() , lastName );
+        FilterUtils.applySimpleLikeFilter(dql, "e", EntertainmentPrtcption.employee().employee().person().identityCard().firstName() , firstName );
+        FilterUtils.applySimpleLikeFilter(dql, "e", EntertainmentPrtcption.employee().employee().person().identityCard().middleName() , midName  );
+        FilterUtils.applySimpleLikeFilter(dql, "e", EntertainmentPrtcption.employee().employee().person().identityCard().lastName() , lastName );
 
         //FilterUtils.applySimpleLikeFilter(dql,"e" , EntertainmentPrtcption.type().postRelation().id().s() , employee_post);
         if(null != postList && !postList.isEmpty()){
-            dql.where(DQLExpressions.in(DQLExpressions.property("e", EntertainmentPrtcption.type().postRelation().id()),postList ));
+            dql.where(DQLExpressions.in(DQLExpressions.property("e", EntertainmentPrtcption.employee().postRelation().id()),postList ));
         }
 
 

@@ -6,14 +6,14 @@
                xsi:schemaLocation="http://www.tandemframework.org/meta/entity http://www.tandemframework.org/schema/meta/meta-entity.xsd">
                 <entity name="entertainmentTypeUnit" title="Учебное мероприятие">
                     <property name="titile" type="trimmedstring" required="true" title="Название"/>
-                    <many-to-one name="type" entity-ref="entertainmentType" title="Типы мероприятий" />
+                    <many-to-one name="type" entity-ref="entertainmentType" required="true" title="Типы мероприятий" />
                     <property name="dateBegin" type="date" required="true" title="Дата начала" />
                     <property name="dateEnd" type="date" title="Дата окончания" />
                     <property name="description" type="text"  title="Описание"/>
                 </entity>
                 <entity name="entertainmentPrtcption" title="Участие во внеучебном мероприятии">
                     <many-to-one name="unit" entity-ref="entertainmentTypeUnit" title="Мероприятие" required="true" />
-                    <many-to-one name="type" entity-ref="employeePost" title="Участник" required="true" />
-                    <property name="overseer" type="boolean"  title="Наблюдатель" required="true"/>
+                    <many-to-one name="employee" entity-ref="employeePost" title="Участник" required="true" />
+                    <property name="overseer" type="boolean"  title="Наблюдатель" required="true" default-value="false"/>
                 </entity>
 </entity-config>

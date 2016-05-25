@@ -28,7 +28,7 @@ public class EntParticipationViewUI extends UIPresenter
     {
         if(null != entPrtcptionHolder.getValue())
         {
-            return entPrtcptionHolder.getValue().getType().getEmployee().getFullFio();
+            return entPrtcptionHolder.getValue().getEmployee().getEmployee().getFullFio();
         }else{
             return "";
         }

@@ -6,6 +6,7 @@ import org.tandemframework.caf.logic.handler.IDefaultComboDataSourceHandler;
 import org.tandemframework.caf.logic.handler.IDefaultSearchDataSourceHandler;
 import org.tandemframework.caf.ui.config.BusinessComponentManager;
 import org.tandemframework.caf.ui.config.datasource.ColumnListExtPoint;
+import org.tandemframework.caf.ui.config.datasource.IColumnListExtPointBuilder;
 import org.tandemframework.caf.ui.config.presenter.PresenterExtPoint;
 import org.tandemframework.caf.ui.datasource.UIDataSourceConfig;
 import org.tandemframework.caf.ui.datasource.select.SelectDSConfig;
@@ -73,42 +74,33 @@ public class EntParticipationList extends BusinessComponentManager
     {
         final String alias = "a";
         final DQLSelectBuilder entPart = new DQLSelectBuilder().fromEntity(EntertainmentPrtcption.class, alias);
-        //Сюда пишем привязку из i18n.properties
-        return columnListExtPointBuilder(SELECT_ENT_DS)
-                /*.addColumn(publisherColumn("entertainmentTypeUnit", EntertainmentPrtcption.unit().titile().s())
-                .order().create())*/
-                //EntertainmentPrtcption.overseer().s())
-                .addColumn(publisherColumn("title", EntertainmentPrtcption.P_FULL_ENTERTAINMENT_NAME).publisherLinkResolver(new IPublisherLinkResolver()
-                {
-                    @Override
 
-                    public Object getParameters(IEntity entity)
-                    {
-                        EntertainmentPrtcption entPrtcption = (EntertainmentPrtcption) entity;
-                        return new ParametersMap().add(PublisherActivator.PUBLISHER_ID_KEY, entPrtcption != null ? entPrtcption.getId().toString() : null).add(EntParticipationViewUI.PUBLISHER_ID, entPrtcption.getId().toString());
-                    }
+        IColumnListExtPointBuilder columns = columnListExtPointBuilder(SELECT_ENT_DS);
 
-                    @Override
-                    public String getComponentName(IEntity entity)
-                    {
-                        return EntParticipationView.class.getSimpleName();
-                    }
-                }).create())
-                .addColumn(textColumn("employeePost", EntertainmentPrtcption.type().person().identityCard().fullFio().s())
-                        .order().create())
-                .addColumn(textColumn("overseer", (EntertainmentPrtcption.overseerAsString())).create())
-                .addColumn(actionColumn(EDIT_COLUMN_NAME, CommonDefines.ICON_EDIT, EDIT_LISTENER).permissionKey("ui:secModel.orgUnit_editEntParticipation"))
-                .addColumn(actionColumn(DELETE_COLUMN_NAME, CommonDefines.ICON_DELETE, DELETE_LISTENER,
+        columns.addColumn(publisherColumn("title", EntertainmentPrtcption.P_FULL_ENTERTAINMENT_NAME).publisherLinkResolver(new IPublisherLinkResolver()
+        {
+            @Override
 
-                        FormattedMessage.with().template("selectEntDS.delete.alert")
-                                .parameter(EntertainmentPrtcption.P_FULL_ENTERTAINMENT_NAME)
-                                .create()
-                ).permissionKey("ui:secModel.orgUnit_deleteEntParticipation"))
-                        .create() ;
+            public Object getParameters(IEntity entity)
+            {
+                EntertainmentPrtcption entPrtcption = (EntertainmentPrtcption) entity;
+                return new ParametersMap().add(PublisherActivator.PUBLISHER_ID_KEY, entPrtcption != null ? entPrtcption.getId().toString() : null).add(EntParticipationViewUI.PUBLISHER_ID, entPrtcption.getId().toString());
+            }
+
+            @Override
+            public String getComponentName(IEntity entity)
+            {
+                return EntParticipationView.class.getSimpleName();
+            }
+        }).permissionKey("ui:pageSettings.permissionEdit"));
+        columns.addColumn(textColumn("employeePost", EntertainmentPrtcption.employee().person().identityCard().fullFio().s()).order());
+        columns.addColumn(textColumn("overseer", (EntertainmentPrtcption.overseerAsString())));
+        columns.addColumn(actionColumn(EDIT_COLUMN_NAME, CommonDefines.ICON_EDIT, EDIT_LISTENER).permissionKey("ui:pageSettings.permissionEdit").visible("ui:pageSettings.editDeleteColumnsIsVisible"));
+        columns.addColumn(actionColumn(DELETE_COLUMN_NAME, CommonDefines.ICON_DELETE, DELETE_LISTENER,
+                 FormattedMessage.with().template("selectEntDS.delete.alert")
+                        .parameter(EntertainmentPrtcption.P_FULL_ENTERTAINMENT_NAME).create()
+
+        ).permissionKey("ui:pageSettings.permissionDelete").visible("ui:pageSettings.editDeleteColumnsIsVisible")) ;
+        return columns.create();
     }
-
-
-
-// entertainmentDelete
-
 }
