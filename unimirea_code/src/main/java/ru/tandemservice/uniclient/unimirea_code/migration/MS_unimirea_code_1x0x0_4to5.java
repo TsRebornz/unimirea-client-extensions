@@ -35,7 +35,7 @@ public class MS_unimirea_code_1x0x0_4to5 extends IndependentMigrationScript
 
 
 			// задать значение по умолчанию
-			java.lang.Long defaultType = 1000000111l;		
+			java.lang.Long defaultType = 1000000111l;
 			tool.executeUpdate("update entertainmenttypeunit_t set type_id=? where type_id is null", defaultType);
 
 			// сделать колонку NOT NULL
